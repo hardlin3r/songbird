@@ -1,0 +1,28 @@
+body {
+  background-color: #222;
+  color: white;
+}
+header {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.p-item:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.p-item:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.p-item {
+  padding: 5px;
+  border: 1px solid green;
+  text-align: center;
+  background-color: #008966;
+  border-color: #007c5d;
+  color: white;
+}
+.p-item.active {
+  background-color: #00bc8c;
+  border-color: #00bc8d;
+}

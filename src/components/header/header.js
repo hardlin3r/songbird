@@ -1,21 +1,20 @@
 import React, { Fragment } from 'react';
+import Pagination from '../pagination'
 
-function Header() {
+function Header({ score = 0 }) {
   return (
     <Fragment>
-      <div className="row">
-        <div className="col-sm">
-          Logo
+      <header className="row align-items-center">
+        <div className="col-sm text-left">
+          <h1>
+            Songbird
+          </h1>
         </div>
-        <div className="col-sm">
-          Score
+        <div className="col-sm text-right">
+          Score: {score}
         </div>
-      </div>
-      <div className="row">
-        <div className="col-sm">
-          Round
-        </div>
-      </div>
+      </header>
+      <Pagination />
     </Fragment>
   );
 }
