@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Pagination from '../pagination'
 
-function Header({ score = 0 }) {
+function Header({ round, score, l }) {
   return (
     <Fragment>
       <header className="row align-items-center">
@@ -14,7 +14,7 @@ function Header({ score = 0 }) {
           Score: {score}
         </div>
       </header>
-      <Pagination />
+      <Pagination l={l} />
     </Fragment>
   );
 }
