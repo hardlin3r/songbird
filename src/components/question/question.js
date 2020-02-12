@@ -1,8 +1,9 @@
 import React from 'react';
+import unknownBird from './unknown_bird.jpg';
 
 let Question = React.forwardRef(({ success, answer }, ref) => {
   let name = success ? answer.name : "****"
-  let img = success ? answer.image: "none"
+  let img = success ? answer.image: unknownBird;
   return (
     <div className="row jumbotron random-bird">
       <div className="col-sm-6">
