@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Question({ success, answer }) {
+let Question = React.forwardRef(({ success, answer }, ref) => {
   let name = success ? answer.name : "****"
   let img = success ? answer.image: "none"
   return (
@@ -14,7 +14,7 @@ function Question({ success, answer }) {
             {name}
           </li>
           <li className="list-group-item">
-            <audio controls>
+            <audio controls ref={ref}>
               <source src={answer.audio} type="audio/mp3" />
               Your browser does not support the audio tag.
             </audio>
@@ -23,6 +23,6 @@ function Question({ success, answer }) {
       </div>
     </div>
   );
-}
+});
 
 export default Question;

@@ -40,6 +40,7 @@ class App extends Component {
     this.listClick = this.listClick.bind(this);
     this.clickNext = this.clickNext.bind(this);
     this.clickRestart = this.clickRestart.bind(this);
+    this.audioRef1 = React.createRef();
   }
 
   clickRestart(e) {
@@ -52,24 +53,30 @@ class App extends Component {
         success: false,
         finish: false,
       }
+    }, () => {
+      if(this.audioRef1.current) {
+        this.audioRef1.current.pause();
+        this.audioRef1.current.load();
+      }
     })
   }
 
   clickNext(e) {
     e.preventDefault();
     if(this.state.success) {
-      let nAttempts = this.state.attempts.size - 1;
-      let newScore = this.state.score + 5 - nAttempts;
       let newRound = this.state.round + 1;
-      console.log(newRound);
       if(newRound === 5) {
-        console.log("FINISHED!!!")
         this.setState(state => {
           return {
             ...state,
             round: 0,
             finish: true
           };
+        }, () => {
+            if(this.audioRef1.current) {
+            this.audioRef1.current.pause();
+            this.audioRef1.current.load();
+          }
         })
       } else {
         this.setState(state => {
@@ -81,11 +88,19 @@ class App extends Component {
             success: false,
             finish: false,
           };
+        }, () => {
+          if(this.audioRef1.current) {
+            this.audioRef1.current.pause();
+            this.audioRef1.current.load();
+          }
         });
       }
     }
   }
 
+  componentDidMount() {
+    console.log(this.audioRef1.current);
+  }
   listClick(e) {
     let attempts = this.state.attempts;
     let id = parseInt(e.target.dataset.id);
@@ -144,7 +159,7 @@ class App extends Component {
         </div>
         <div className="row">
           <div className="col-sm">
-          <Question success={success} answer={answer} />
+            <Question success={success} answer={answer} ref={this.audioRef1} />
           </div>
         </div>
         <div className="row">
